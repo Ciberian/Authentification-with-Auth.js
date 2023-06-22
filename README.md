@@ -28,6 +28,9 @@
 ### Имплементация авторизации с помощью библиотеки NextAuth.js(она же Auth.js)
 1. Устанавливаем библиотеку — `npm install next-auth`.
 
+2. Добавляем динамический api-роут в папку app — `app/api/auth/[...nextauth]/route.ts`.
+Все запросы к /api/auth/* (signIn, callback, signOut и т.д.) будут автоматически обрабатываться NextAuth.js.
+
 ---
 Данное [Next.js](https://nextjs.org/) - приложение создано с помощью утилиты [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
