@@ -1,34 +1,52 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+## Создание авторизации на сайте, через сторонние сервисы.
 
-## Getting Started
+### Регистрация приложения на сервисе-провайдере.
+До непосредственной имплементации авторизации через сторонние сервисы необходимо, зарегистрировать наше приложение на этих сервисах.
 
-First, run the development server:
+*Для авторизации через Гугл, нам необходимо зарегистрировать наше приложение на [console.cloud.google.com/api](console.cloud.google.com/api).*
+*Для авторизации через Яндекс, нам необходимо зарегистрировать наше приложение на [oauth.yandex.ru](oauth.yandex.ru).*
+*Для авторизации через ГитХаб, нам необходимо зарегистрировать наше приложение на [github.com/settings/applications/new](github.com/settings/applications/new).*
+
+Процедура регистрации нашего приложения на различных сервисах может незначительно отличаться.
+Но как правило в процессе регистрации нам необходимо указать следующие данные:
+- тип нашего приложения — Веб-сервис, IOS-приложение, Android-приложение и так далее;
+- к каким данным пользователя мы хотим иметь доступ — имя, фамилия, пол, дата рождения, email и так далее;
+- URI нашего приложения, а так же redirectURI — адрес страницы, на который пользователь будет перенаправлен после авторизации.
+
+После регистрации приложения на сервисе у нас появится доступ к **Client ID** и **Client secret**.
+**Client ID** — уникальный идентификатор приложения. Идентификатор нельзя изменить.
+**Client secret** — секретный ключ приложения, которым будет подписан jwt-токен с информацией о пользователе.
+Эти данные мы сохраним в переменных окружения в .env файле нашего приложения и будем использовать при создании сервиса авторизации.
+
+Коротко о том как работает механизм **OAuth 2**.
+1. Пользователь нажимает кнопку на вашем сайте «войти через ХХХ».
+2. Производится обмен запросами с сервером XXX.
+3. Происходит перенаправление пользователя на ХХХ для ввода пароля, логина и подтверждения передачи данных на ваш сайт.
+4. Получаем токен, с помощью которого у сервера ХХХ можно запросить дополнительные данные о пользователе.
+Конкретика зависит от реализации OAuth на сервис-провайдере — поддерживаемой версии протокола, поддерживаемых потоков и пр.
+
+---
+Данное [Next.js](https://nextjs.org/) - приложение создано с помощью утилиты [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+
+## Запуск в режиме разработки
+Для запуска dev-сервера выполните следующую команду:
 
 ```bash
 npm run dev
-# or
+# или
 yarn dev
-# or
+# или
 pnpm dev
 ```
+Откройте в браузере вкладку по следующему адресу [http://localhost:3000](http://localhost:3000).
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Изучить подробнее
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Больше информации о Next.js, вы сможете получить следующих ресурсах:
+- [Next.js Documentation](https://nextjs.org/docs) - особенности Next.js и API.
+- [Learn Next.js](https://nextjs.org/learn) - интерактивный туторила по Next.js.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## Развертывание на Vercel
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Развернуть приложение можно на [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme).
+Больше информации по данной теме по ссылке [Next.js deployment documentation](https://nextjs.org/docs/deployment).
