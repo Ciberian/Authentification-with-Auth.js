@@ -6,7 +6,7 @@ const Footer = () => {
       </p>
       <p>
         Документация <a href="https://next-auth.js.org/getting-started/introduction">NextAuth.js</a> и{' '}
-        <a href="https://authjs.dev/getting-started/oauth-tutorial">Auth.js</a>
+        <a href="https://authjs.dev/getting-started/oauth-tutorial">Auth.js</a>.
       </p>
     </footer>
   );
