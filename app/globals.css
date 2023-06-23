@@ -52,16 +52,8 @@ form {
   justify-content: center;
 }
 
-form button,
 button {
-  background-color: var(--color-active);
   cursor: pointer;
-  color: white;
-  border: none;
-}
-
-button {
-  padding: 0.5rem 1rem;
 }
 
 .container {
@@ -118,4 +110,29 @@ button {
   -webkit-background-clip: text;
   background-clip: text;
   color: #0f0c29;
+}
+
+.provider-btn {
+  width: 15rem;
+  display: inline-block;
+  font-size: 1rem;
+  background: linear-gradient(135deg, #12BCB0 20%, #FABE0E 70%);
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+  padding: 0.3em 0.6em ;
+  border: 3px solid transparent;
+  border-image: linear-gradient(135deg, #12BCB0 20%, #FABE0E 70%);
+  border-image-slice: 1;
+}
+
+.divide-line::before,
+.divide-line::after {
+  content: "";
+  display: inline-block;
+  width: 6.5rem;
+  height: 1px;
+  margin: 0 0.5rem;
+  vertical-align: middle;
+  background-color: var(--color-bg);
 }
